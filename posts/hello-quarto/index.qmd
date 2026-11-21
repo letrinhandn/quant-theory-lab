@@ -5,7 +5,7 @@ author: "Le Tri Nhan"
 date: 2026-11-21
 categories: [meta]
 draft: false
-image: "../../styles/favicon.svg"
+image: "figures/thumbnail.jpg"
 ---
 
 This vault publishes theory essays with Quarto instead of Substack.

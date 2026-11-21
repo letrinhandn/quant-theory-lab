@@ -26,7 +26,7 @@ website:
           - text: Quant Theory Lab
             href: https://letrinhandn.github.io/quant-theory-lab/
           - text: Investment Research Lab
-            href: https://github.com/letrinhandn/investment-research-lab
+            href: https://letrinhandn.github.io/investment-research-lab/
       - href: index.qmd
         text: Essays
       - href: about.qmd
@@ -38,7 +38,7 @@ website:
         href: https://x.com/comrade_lenhan
   page-footer:
     left: "Le Tri Nhan · Quant Theory Lab"
-    center: "[Personal site](https://letrinhan-site.vercel.app/) · [Economic Lab](https://letrinhandn.github.io/economic-lab/) · [IRL](https://github.com/letrinhandn/investment-research-lab)"
+    center: "[Personal site](https://letrinhan-site.vercel.app/) · [Economic Lab](https://letrinhandn.github.io/economic-lab/) · [IRL](https://letrinhandn.github.io/investment-research-lab/)"
     right: "Research only. Not investment advice."
   search: true
   draft-mode: gone
@@ -46,7 +46,7 @@ website:
 format:
   html:
     theme:
-      - darkly
+      - flatly
       - styles/quarto.scss
     toc: true
     toc-depth: 3
