@@ -1,6 +1,5 @@
 ---
-title: "Quant Theory Lab"
-subtitle: "Essays on pricing theory, risk, and quantitative finance"
+title: "Essays"
 listing:
   contents:
     - posts/*/index.qmd
@@ -13,7 +12,13 @@ listing:
   grid-item-border: false
   image-height: 220px
   fields: [image, title, description, date, reading-time, categories]
+  field-display-names:
+    reading-time: "Read"
 page-layout: full
 ---
 
-Part of the [digital garden](https://letrinhan-site.vercel.app/) · [Economic Lab](https://letrinhandn.github.io/economic-lab/) · [Investment Research Lab](https://github.com/letrinhandn/investment-research-lab)
+Pricing theory, risk, and quantitative finance.
+
+[Digital garden](https://letrinhan-site.vercel.app/)  
+[Economic Lab](https://letrinhandn.github.io/economic-lab/)  
+[Investment Research Lab](https://letrinhandn.github.io/investment-research-lab/)
