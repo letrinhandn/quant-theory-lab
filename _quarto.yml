@@ -19,7 +19,7 @@ website:
     logo-alt: "Le Tri Nhan"
     title: false
     left:
-      - text: Home
+      - text: Tech
         href: https://letrinhandn.github.io/letrinhan-site/
       - text: Economics
         href: https://letrinhandn.github.io/economic-lab/
@@ -30,7 +30,7 @@ website:
         href: https://letrinhandn.github.io/investment-research-lab/
   page-footer:
     left: "Le Tri Nhan"
-    center: "[Home](https://letrinhandn.github.io/letrinhan-site/)  [Economics](https://letrinhandn.github.io/economic-lab/)  [Quant](https://letrinhandn.github.io/quant-theory-lab/)  [Finance](https://letrinhandn.github.io/investment-research-lab/)"
+    center: "[Tech](https://letrinhandn.github.io/letrinhan-site/)  [Economics](https://letrinhandn.github.io/economic-lab/)  [Quant](https://letrinhandn.github.io/quant-theory-lab/)  [Finance](https://letrinhandn.github.io/investment-research-lab/)"
     right: "Research only"
   search: false
   draft-mode: gone

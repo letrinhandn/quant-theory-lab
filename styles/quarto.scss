@@ -64,9 +64,10 @@ body {
   color: $ink;
 }
 
-/* Shared header — Home Economics | avatar | Quant Finance (same as hub) */
+/* Shared header — Tech Economics | avatar | Quant Finance (same as hub) */
 #quarto-header {
   background: #3a070e;
+  overflow: visible !important;
 }
 
 .navbar {
@@ -74,6 +75,7 @@ body {
   border-bottom: 3px solid #d9cab3 !important;
   min-height: 3.4rem;
   padding: 0.45rem 1rem !important;
+  overflow: visible !important;
 }
 
 .navbar > .container,
@@ -89,24 +91,35 @@ body {
   padding-left: 0 !important;
   padding-right: 0 !important;
   min-height: 2.6rem;
+  overflow: visible !important;
 }
 
-/* Centered avatar */
+/* Centered avatar — above full-width collapse so it stays visible */
+.navbar .navbar-brand-container,
 .navbar-brand-container {
   position: absolute !important;
   left: 50% !important;
   top: 50% !important;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) !important;
   margin: 0 !important;
-  z-index: 3;
+  padding: 0 !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  width: auto !important;
+  z-index: 40 !important;
+  pointer-events: auto;
+  order: 0 !important;
 }
 
-.navbar .navbar-brand {
-  display: flex;
+.navbar .navbar-brand,
+.navbar .navbar-brand.navbar-brand-logo {
+  display: flex !important;
   align-items: center;
   justify-content: center;
   margin: 0 !important;
   padding: 0 !important;
+  overflow: visible !important;
+  max-width: none !important;
 }
 
 .navbar .navbar-brand img,
@@ -124,13 +137,17 @@ body {
     display: none !important;
   }
 
-  .navbar-container #navbarCollapse {
+  .navbar-container #navbarCollapse,
+  .navbar .navbar-collapse {
     display: flex !important;
     flex-basis: 100%;
     width: 100%;
     align-items: center;
     justify-content: space-between;
     visibility: visible !important;
+    background: transparent !important;
+    position: relative;
+    z-index: 1;
   }
 
   .navbar-nav.navbar-nav-scroll.me-auto {
@@ -199,9 +216,11 @@ body {
     max-width: none !important;
   }
 
+  .navbar .navbar-brand-container,
   .navbar-brand-container {
     position: static !important;
     transform: none !important;
+    z-index: auto !important;
   }
 
   .navbar-container #navbarCollapse {
