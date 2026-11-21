@@ -11,7 +11,6 @@ website:
   description: "Essays on quantitative finance theory by Le Tri Nhan"
   site-url: https://letrinhandn.github.io/quant-theory-lab
   repo-url: https://github.com/letrinhandn/quant-theory-lab
-  repo-actions: [source, issue]
   favicon: styles/favicon.svg
   navbar:
     background: primary
@@ -37,9 +36,9 @@ website:
       - icon: twitter
         href: https://x.com/comrade_lenhan
   page-footer:
-    left: "Le Tri Nhan · Quant Theory Lab"
-    center: "[Personal site](https://letrinhan-site.vercel.app/) · [Economic Lab](https://letrinhandn.github.io/economic-lab/) · [IRL](https://letrinhandn.github.io/investment-research-lab/)"
-    right: "Research only. Not investment advice."
+    left: "Le Tri Nhan"
+    center: "[Personal site](https://letrinhan-site.vercel.app/)  [EL](https://letrinhandn.github.io/economic-lab/)  [IRL](https://letrinhandn.github.io/investment-research-lab/)"
+    right: "Research only"
   search: true
   draft-mode: gone
 
