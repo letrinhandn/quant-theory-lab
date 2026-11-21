@@ -44,7 +44,7 @@ def new_plugin(kind: str, name: str, domain: str = "general") -> Path:
     if kind == "paper":
         meta.update({"format": "article", "engine": "markdown"})
     if kind == "post":
-        meta.update({"channel": "substack", "status": "draft"})
+        meta.update({"channel": "quarto", "format": "html", "status": "draft"})
     if kind == "data":
         meta = {
             "slug": slug,
@@ -74,4 +74,33 @@ def new_plugin(kind: str, name: str, domain: str = "general") -> Path:
                 '{"display_name": "Python 3", "language": "python", "name": "python3"}},'
                 '\n "nbformat": 4,\n "nbformat_minor": 5\n}\n'
             )
+    if kind == "post":
+        example = dest / "index.qmd.example"
+        qmd = dest / "index.qmd"
+        if not qmd.exists():
+            if example.exists():
+                qmd.write_text(
+                    example.read_text()
+                    .replace('title: "Essay title"', f'title: "{slug}"')
+                    .replace("date: today", "date: today")
+                )
+                example.unlink()
+            else:
+                qmd.write_text(
+                    "---\n"
+                    f'title: "{slug}"\n'
+                    'description: ""\n'
+                    'author: "Le Tri Nhan"\n'
+                    "date: today\n"
+                    "categories: [theory]\n"
+                    "draft: true\n"
+                    "---\n\n"
+                    f"## {slug}\n\n"
+                    "Draft Quarto essay.\n"
+                )
+        elif example.exists():
+            example.unlink()
+        old = dest / "draft.md"
+        if old.exists():
+            old.unlink()
     return dest

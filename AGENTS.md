@@ -5,9 +5,9 @@ Read this first. This repo is an infinite knowledge vault for quantitative finan
 ## Mental model
 
 ```
-NOTEBOOKS          PAPERS            POSTS (Substack)     PROJECTS
+NOTEBOOKS          PAPERS            POSTS (Quarto)       PROJECTS
 notebooks/<slug>/  papers/<slug>/    posts/<slug>/        projects/<slug>/
-  *.ipynb            chapters/         draft.md             run.py + config.yaml
+  *.ipynb            chapters/         index.qmd            run.py + config.yaml
   config.yaml        config.yaml       config.yaml
 
 DATA               DATASETS          MODELS
@@ -31,7 +31,13 @@ make new-project NAME=calib-demo DOMAIN=derivatives
 make new-data NAME=yahoo-options DOMAIN=derivatives
 make new-dataset NAME=bsm-toy-panel DOMAIN=asset_pricing
 make new-model NAME=black-scholes-merton DOMAIN=derivatives
+
+make preview          # Quarto site
+make render
+make publish          # GitHub Pages when ready
 ```
+
+Posts publish via Quarto (`posts/<slug>/index.qmd`), not Substack. See `docs/quarto.md`.
 
 ## Directory contract
 
@@ -39,7 +45,7 @@ make new-model NAME=black-scholes-merton DOMAIN=derivatives
 |------|---------|----------|
 | `notebooks/<slug>/` | Jupyter theory | `config.yaml`, notebook file |
 | `papers/<slug>/` | Academic paper | `config.yaml`, `chapters/` or manuscript |
-| `posts/<slug>/` | Substack / essay | `config.yaml`, `draft.md` |
+| `posts/<slug>/` | Quarto essay | `config.yaml`, `index.qmd` |
 | `projects/<slug>/` | Runnable research | `config.yaml`, `run.py` |
 | `data/<slug>/` | Data source | `manifest.yaml` |
 | `datasets/<slug>/` | Curated pack | `config.yaml` |

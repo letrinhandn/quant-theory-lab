@@ -1,0 +1,304 @@
+/*-- scss:defaults --*/
+$burgundy: #6b0f1a;
+$burgundy-mid: #8b1a2b;
+$burgundy-bright: #9b1b2e;
+$burgundy-deep: #3d080f;
+$ink: #1a0508;
+$paper: #f2e8e4;
+$paper-dim: #c9b6b0;
+$gold: #c4a35a;
+$rule: rgba(242, 232, 228, 0.22);
+
+$body-bg: $burgundy-deep;
+$body-color: $paper;
+$link-color: $gold;
+$link-hover-color: lighten($gold, 8%);
+
+$navbar-bg: $burgundy;
+$navbar-fg: $paper;
+$navbar-hl: $gold;
+$navbar-brand-color: $paper;
+$navbar-brand-hover-color: $gold;
+
+$footer-bg: #140406;
+$footer-fg: $paper-dim;
+$footer-font-size: 0.85rem;
+
+$toc-color: $paper;
+$toc-active-border: $gold;
+$toc-font-size: 0.9rem;
+
+$code-bg: rgba(26, 5, 8, 0.55);
+$code-color: $paper;
+$pre-bg: rgba(26, 5, 8, 0.72);
+
+$border-color: $rule;
+$card-bg: rgba(107, 15, 26, 0.55);
+$card-border-color: $rule;
+
+$primary: $burgundy-bright;
+$secondary: $gold;
+$light: $paper;
+$dark: $ink;
+
+$font-family-sans-serif: "Be Vietnam Pro", "Helvetica Neue", system-ui, sans-serif;
+$headings-font-family: "Be Vietnam Pro", "Helvetica Neue", system-ui, sans-serif;
+$headings-font-weight: 650;
+$headings-color: $paper;
+$font-size-base: 1.05rem;
+$line-height-base: 1.65;
+
+/*-- scss:rules --*/
+@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Press+Start+2P&display=swap");
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-feature-settings: "kern", "liga";
+  background:
+    radial-gradient(ellipse 70% 45% at 50% 0%, #8b1a2b 0%, transparent 58%),
+    linear-gradient(180deg, $burgundy 0%, $burgundy-deep 55%, #140406 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+.navbar {
+  border-bottom: 3px solid $rule;
+  box-shadow: 0 4px 0 rgba(26, 5, 8, 0.35);
+}
+
+.navbar-brand {
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  text-shadow:
+    2px 0 0 $burgundy-deep,
+    -2px 0 0 $burgundy-deep,
+    0 2px 0 $burgundy-deep,
+    0 -2px 0 $burgundy-deep;
+}
+
+.navbar-nav .nav-link {
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+#quarto-content,
+.page-columns {
+  position: relative;
+  z-index: 1;
+}
+
+/* Essay sheet: paper on burgundy (not on listing home) */
+body:not(:has(.quarto-listing)) #quarto-document-content {
+  background: $paper;
+  color: $ink;
+  border: 3px solid $paper;
+  box-shadow:
+    0 0 0 3px $burgundy-deep,
+    6px 6px 0 $ink;
+  padding: 1.75rem 1.5rem 2.25rem;
+  border-radius: 0;
+}
+
+@media (min-width: 992px) {
+  body:not(:has(.quarto-listing)) #quarto-document-content {
+    padding: 2.25rem 2.5rem 2.75rem;
+  }
+}
+
+#title-block-header .title {
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 700;
+  color: $ink;
+  letter-spacing: -0.01em;
+}
+
+#title-block-header .description,
+#title-block-header .quarto-title-meta,
+#title-block-header .quarto-categories .quarto-category {
+  color: mix($ink, $paper-dim, 70%);
+}
+
+#title-block-header .quarto-categories .quarto-category {
+  border: 2px solid $burgundy;
+  background: transparent;
+  color: $burgundy;
+  border-radius: 0;
+  font-weight: 600;
+}
+
+main.content a,
+#quarto-document-content a {
+  color: $burgundy-bright;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
+}
+
+main.content a:hover,
+#quarto-document-content a:hover {
+  color: $burgundy;
+}
+
+main.content h1,
+main.content h2,
+main.content h3,
+main.content h4,
+#quarto-document-content h1,
+#quarto-document-content h2,
+#quarto-document-content h3,
+#quarto-document-content h4 {
+  color: $ink;
+  border-bottom-color: rgba(107, 15, 26, 0.18);
+}
+
+main.content blockquote,
+#quarto-document-content blockquote {
+  border-left: 4px solid $gold;
+  background: rgba(196, 163, 90, 0.12);
+  color: mix($ink, $burgundy, 85%);
+}
+
+main.content code,
+#quarto-document-content code {
+  color: $burgundy-deep;
+  background: rgba(107, 15, 26, 0.08);
+}
+
+main.content pre,
+#quarto-document-content pre {
+  background: #1a0508;
+  border: 2px solid $burgundy;
+  box-shadow: 3px 3px 0 rgba(26, 5, 8, 0.35);
+}
+
+main.content pre code,
+#quarto-document-content pre code {
+  color: $paper;
+  background: transparent;
+}
+
+main.content table,
+#quarto-document-content table {
+  color: $ink;
+}
+
+main.content figure img,
+#quarto-document-content figure img,
+main.content img,
+#quarto-document-content img {
+  border: 3px solid $ink;
+  box-shadow: 4px 4px 0 rgba(107, 15, 26, 0.35);
+  background: #fff;
+}
+
+main.content figcaption,
+#quarto-document-content figcaption,
+main.content em:has(+ ),
+#quarto-document-content p > em {
+  color: mix($ink, $paper-dim, 65%);
+}
+
+/* Listing / home cards */
+.quarto-listing .listing-title a {
+  color: $paper;
+  font-weight: 700;
+}
+
+.quarto-listing .listing-description,
+.quarto-listing .listing-subtitle,
+.quarto-listing .listing-categories .listing-category,
+.quarto-listing .listing-date,
+.quarto-listing .listing-reading-time {
+  color: $paper-dim;
+}
+
+.quarto-listing .list .listing-item,
+.quarto-listing .quarto-post {
+  border: 3px solid $rule;
+  background: rgba(107, 15, 26, 0.42);
+  box-shadow: 4px 4px 0 rgba(26, 5, 8, 0.45);
+  padding: 1rem 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.quarto-listing .list .listing-item:hover,
+.quarto-listing .quarto-post:hover {
+  border-color: $gold;
+}
+
+.quarto-title-banner,
+.quarto-title-block {
+  margin-bottom: 1rem;
+}
+
+/* TOC on dark chrome */
+.sidebar nav[role="doc-toc"],
+#toc-title,
+.sidebar nav[role="doc-toc"] ul a {
+  color: $paper-dim;
+}
+
+.sidebar nav[role="doc-toc"] ul a.active,
+.sidebar nav[role="doc-toc"] ul a:hover {
+  color: $gold;
+}
+
+.nav-footer {
+  border-top: 3px solid $rule;
+  margin-top: 2rem;
+}
+
+.nav-footer a {
+  color: $gold;
+}
+
+/* Home / about pages without paper sheet feel too empty — soft panel */
+.quarto-title-block .quarto-title h1.title {
+  font-family: "Press Start 2P", monospace;
+  font-size: clamp(0.85rem, 2.5vw, 1.15rem);
+  line-height: 1.45;
+  color: $paper;
+  text-shadow:
+    2px 0 0 $burgundy-deep,
+    -2px 0 0 $burgundy-deep,
+    0 2px 0 $burgundy-deep,
+    0 -2px 0 $burgundy-deep;
+}
+
+/* When title sits inside paper content (essay), keep ink */
+#quarto-document-content #title-block-header .title {
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  text-shadow: none;
+  color: $ink;
+}
+
+::selection {
+  background: $gold;
+  color: $ink;
+}
+
+
+/* Force garden chrome (override Bootstrap light leftovers) */
+body.quarto-light,
+body.quarto-dark,
+body {
+  background:
+    radial-gradient(ellipse 70% 45% at 50% 0%, #8b1a2b 0%, transparent 58%),
+    linear-gradient(180deg, #6b0f1a 0%, #3d080f 55%, #140406 100%) !important;
+  background-attachment: fixed !important;
+  color: #f2e8e4 !important;
+}
+
+#quarto-content,
+.page-columns .page-columns {
+  background: transparent !important;
+}
+
+.navbar {
+  background: #6b0f1a !important;
+}

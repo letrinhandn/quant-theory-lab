@@ -1,0 +1,62 @@
+project:
+  type: website
+  output-dir: _site
+  render:
+    - index.qmd
+    - about.qmd
+    - posts/**/index.qmd
+
+website:
+  title: "Quant Theory Lab"
+  description: "Essays on quantitative finance theory by Le Tri Nhan"
+  site-url: https://letrinhandn.github.io/quant-theory-lab
+  repo-url: https://github.com/letrinhandn/quant-theory-lab
+  repo-actions: [source, issue]
+  favicon: styles/favicon.svg
+  navbar:
+    background: primary
+    foreground: light
+    left:
+      - text: Garden
+        menu:
+          - text: Personal site
+            href: https://letrinhan-site.vercel.app/
+          - text: Economic Lab
+            href: https://letrinhandn.github.io/economic-lab/
+          - text: Quant Theory Lab
+            href: https://letrinhandn.github.io/quant-theory-lab/
+          - text: Investment Research Lab
+            href: https://github.com/letrinhandn/investment-research-lab
+      - href: index.qmd
+        text: Essays
+      - href: about.qmd
+        text: About
+    right:
+      - icon: github
+        href: https://github.com/letrinhandn/quant-theory-lab
+      - icon: twitter
+        href: https://x.com/comrade_lenhan
+  page-footer:
+    left: "Le Tri Nhan · Quant Theory Lab"
+    center: "[Personal site](https://letrinhan-site.vercel.app/) · [Economic Lab](https://letrinhandn.github.io/economic-lab/) · [IRL](https://github.com/letrinhandn/investment-research-lab)"
+    right: "Research only. Not investment advice."
+  search: true
+  draft-mode: gone
+
+format:
+  html:
+    theme:
+      - darkly
+      - styles/quarto.scss
+    toc: true
+    toc-depth: 3
+    toc-location: right
+    code-copy: true
+    code-overflow: wrap
+    html-math-method: mathjax
+    link-external-newwindow: true
+    mainfont: "Be Vietnam Pro"
+    respect-user-color-scheme: false
+
+execute:
+  freeze: auto

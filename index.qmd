@@ -1,0 +1,16 @@
+---
+title: "Quant Theory Lab"
+subtitle: "Essays on pricing theory, risk, and quantitative finance"
+listing:
+  contents:
+    - posts/*/index.qmd
+  type: default
+  sort: "date desc"
+  categories: true
+  sort-ui: true
+  filter-ui: true
+  fields: [date, title, reading-time, categories, description]
+page-layout: full
+---
+
+Part of the [digital garden](https://letrinhan-site.vercel.app/) with Economic Lab and Investment Research Lab.

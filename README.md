@@ -2,22 +2,22 @@
 
 Infinite knowledge vault for **quantitative finance theory**.
 
-Jupyter notebooks, academic papers, Substack essays, model cards, data sources, curated datasets, and research projects. Scale by adding plugins. No hard limit.
+Jupyter notebooks, academic papers, Quarto essays, model cards, data sources, curated datasets, and research projects. Scale by adding plugins. No hard limit.
 
 Author: Le Tri Nhan
 
 ## Mental model
 
 ```
-NOTEBOOKS     PAPERS        POSTS           PROJECTS      DATA / DATASETS / MODELS
-theory .ipynb academic      Substack        experiments   manifests and packs
+NOTEBOOKS     PAPERS        POSTS (Quarto)   PROJECTS      DATA / DATASETS / MODELS
+theory .ipynb academic      site essays      experiments   manifests and packs
 ```
 
 ## Quick start
 
 ```bash
 make setup
-cp .env.example .env
+cp docs/env.example .env
 make doctor
 make list
 ```
@@ -34,18 +34,32 @@ make new-dataset NAME=bsm-toy DOMAIN=derivatives
 make new-model NAME=black-scholes-merton DOMAIN=derivatives
 ```
 
+### Publish essays (Quarto, not Substack)
+
+```bash
+make new-post NAME=risk-neutral-pricing
+# edit posts/<slug>/index.qmd  → set draft: false
+make preview
+make render
+make publish   # GitHub Pages when ready
+```
+
+See [docs/quarto.md](docs/quarto.md).
+
 ## Layout
 
 ```text
 notebooks/   Jupyter theory
 papers/      Academic articles and notes
-posts/       Substack and essays
+posts/       Quarto essays (index.qmd)
 projects/    Runnable research
 data/        Data source manifests
 datasets/    Curated packs
 models/      Model cards and derivations
 packages/    qtl-core, qtl-lab
 lab/         Registry
+_quarto.yml  Quarto website
+_site/       Built site (gitignored)
 artifacts/   Local outputs (gitignored)
 ```
 

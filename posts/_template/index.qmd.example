@@ -1,0 +1,13 @@
+---
+title: "Essay title"
+description: "One-line summary for the listing."
+author: "Le Tri Nhan"
+date: today
+categories: [theory]
+draft: true
+image: ""
+---
+
+## Opening
+
+Write the essay here. When ready to publish, set `draft: false` in this file and `status: published` in `config.yaml`.

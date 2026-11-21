@@ -1,0 +1,6 @@
+name: hello-quarto
+status: published
+domain: general
+description: Starter Quarto essay
+channel: quarto
+format: html

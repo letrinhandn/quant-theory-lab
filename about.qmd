@@ -1,0 +1,10 @@
+---
+title: "About"
+---
+
+**Quant Theory Lab** is Le Tri Nhan's Quarto vault for quantitative finance theory.
+
+Same garden chrome as the [personal site](https://letrinhan-site.vercel.app/): burgundy, paper, gold.
+
+- [Economic Lab](https://letrinhandn.github.io/economic-lab/)
+- [Investment Research Lab](https://github.com/letrinhandn/investment-research-lab)

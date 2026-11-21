@@ -1,5 +1,6 @@
 name: example-post
 status: draft
 domain: general
-channel: substack
-description: Example Substack essay
+channel: quarto
+format: html
+description: Quarto essay (not Substack)
