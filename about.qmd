@@ -4,7 +4,7 @@ title: "About"
 
 Quant Theory Lab is a Quarto notebook vault by Le Tri Nhan.
 
-Root hub: [personal site](https://letrinhan-site.vercel.app/).
+Root hub: [personal site](https://letrinhandn.github.io/letrinhan-site/).
 
 - [Economic Lab](https://letrinhandn.github.io/economic-lab/)
 - [Investment Research Lab](https://letrinhandn.github.io/investment-research-lab/)

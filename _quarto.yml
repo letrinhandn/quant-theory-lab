@@ -19,7 +19,7 @@ website:
       - text: Notebooks
         menu:
           - text: Personal site
-            href: https://letrinhan-site.vercel.app/
+            href: https://letrinhandn.github.io/letrinhan-site/
           - text: Economic Lab
             href: https://letrinhandn.github.io/economic-lab/
           - text: Quant Theory Lab
@@ -35,7 +35,7 @@ website:
         href: https://x.com/comrade_lenhan
   page-footer:
     left: "Le Tri Nhan"
-    center: "[Personal site](https://letrinhan-site.vercel.app/)  [EL](https://letrinhandn.github.io/economic-lab/)  [IRL](https://letrinhandn.github.io/investment-research-lab/)"
+    center: "[Personal site](https://letrinhandn.github.io/letrinhan-site/)  [EL](https://letrinhandn.github.io/economic-lab/)  [IRL](https://letrinhandn.github.io/investment-research-lab/)"
     right: "Research only"
   search: true
   draft-mode: gone
