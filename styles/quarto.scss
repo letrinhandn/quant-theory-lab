@@ -1,39 +1,38 @@
 /*-- scss:defaults --*/
-/* Soft garden theme: brand accents, paper reading surface (no glare) */
-$burgundy: #6b0f1a;
-$burgundy-soft: #8a3a44;
-$burgundy-deep: #3d080f;
-$ink: #241014;
-$ink-muted: #5c4a4d;
-$paper: #f7f1ed;
-$paper-raised: #fffdfb;
-$gold: #9a7b3c;
-$gold-soft: #c4a35a;
-$rule: rgba(36, 16, 20, 0.12);
-$rule-strong: rgba(36, 16, 20, 0.22);
+/* Palette: #5e0b15 #90323d #d9cab3 #bc8034 #8c7a6b */
+$burgundy: #5e0b15;
+$burgundy-mid: #90323d;
+$paper: #d9cab3;
+$paper-raised: #e8dfd0;
+$gold: #bc8034;
+$taupe: #8c7a6b;
+$ink: #5e0b15;
+$ink-muted: #8c7a6b;
+$rule: rgba(94, 11, 21, 0.14);
+$rule-strong: rgba(94, 11, 21, 0.22);
 
 $body-bg: $paper;
 $body-color: $ink;
-$link-color: $burgundy;
-$link-hover-color: darken($burgundy, 8%);
+$link-color: $burgundy-mid;
+$link-hover-color: $burgundy;
 
 $navbar-bg: $burgundy;
-$navbar-fg: #f7f1ed;
-$navbar-hl: $gold-soft;
-$navbar-brand-color: #f7f1ed;
-$navbar-brand-hover-color: $gold-soft;
+$navbar-fg: $paper;
+$navbar-hl: $gold;
+$navbar-brand-color: $paper;
+$navbar-brand-hover-color: $gold;
 
-$footer-bg: #efe6e1;
-$footer-fg: $ink-muted;
+$footer-bg: darken($paper, 4%);
+$footer-fg: $taupe;
 $footer-font-size: 0.85rem;
 
-$toc-color: $ink-muted;
-$toc-active-border: $burgundy;
+$toc-color: $taupe;
+$toc-active-border: $burgundy-mid;
 $toc-font-size: 0.9rem;
 
-$code-bg: rgba(107, 15, 26, 0.06);
-$code-color: $burgundy-deep;
-$pre-bg: #2a181c;
+$code-bg: rgba(94, 11, 21, 0.06);
+$code-color: $burgundy;
+$pre-bg: #3a1218;
 
 $border-color: $rule;
 $card-bg: $paper-raised;
@@ -61,34 +60,33 @@ html {
 body {
   font-feature-settings: "kern", "liga";
   background:
-    linear-gradient(180deg, #f3ebe6 0%, $paper 40%, #f4ece7 100%);
+    linear-gradient(180deg, lighten($paper, 3%) 0%, $paper 45%, darken($paper, 2%) 100%);
   background-attachment: fixed;
   min-height: 100vh;
   color: $ink;
 }
 
 .navbar {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 }
 
 .navbar-brand {
   font-family: "Press Start 2P", monospace;
   font-size: 0.62rem;
   letter-spacing: 0.02em;
-  color: #f7f1ed !important;
+  color: $paper !important;
 }
 
 .navbar-nav .nav-link {
   font-family: "Be Vietnam Pro", sans-serif;
   font-weight: 600;
   font-size: 0.92rem;
-  color: rgba(247, 241, 237, 0.92) !important;
+  color: rgba(217, 202, 179, 0.92) !important;
 }
 
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-link:focus {
-  color: $gold-soft !important;
+  color: $gold !important;
 }
 
 #quarto-content,
@@ -97,12 +95,11 @@ body {
   z-index: 1;
 }
 
-/* Essay reading surface */
 #quarto-document-content {
   background: $paper-raised;
   color: $ink;
   border: 1px solid $rule-strong;
-  box-shadow: 0 10px 30px rgba(36, 16, 20, 0.06);
+  box-shadow: 0 10px 28px rgba(94, 11, 21, 0.07);
   padding: 1.75rem 1.4rem 2.25rem;
 }
 
@@ -126,22 +123,22 @@ body {
 
 #title-block-header .quarto-categories .quarto-category {
   border: 1px solid $rule-strong;
-  background: rgba(107, 15, 26, 0.04);
-  color: $burgundy;
+  background: rgba(144, 50, 61, 0.08);
+  color: $burgundy-mid;
   border-radius: 0;
   font-weight: 600;
 }
 
 main.content a,
 #quarto-document-content a {
-  color: $burgundy;
+  color: $burgundy-mid;
   text-decoration-thickness: 1.5px;
   text-underline-offset: 2px;
 }
 
 main.content a:hover,
 #quarto-document-content a:hover {
-  color: darken($burgundy, 10%);
+  color: $burgundy;
 }
 
 main.content h1,
@@ -159,14 +156,14 @@ main.content h4,
 main.content blockquote,
 #quarto-document-content blockquote {
   border-left: 3px solid $gold;
-  background: rgba(154, 123, 60, 0.08);
-  color: $ink-muted;
+  background: rgba(188, 128, 52, 0.1);
+  color: darken($taupe, 8%);
 }
 
 main.content code,
 #quarto-document-content code {
-  color: $burgundy-deep;
-  background: rgba(107, 15, 26, 0.06);
+  color: $burgundy;
+  background: rgba(94, 11, 21, 0.06);
 }
 
 main.content pre,
@@ -178,7 +175,7 @@ main.content pre,
 
 main.content pre code,
 #quarto-document-content pre code {
-  color: #f3ebe6;
+  color: $paper;
   background: transparent;
 }
 
@@ -187,11 +184,10 @@ main.content figure img,
 main.content img,
 #quarto-document-content img {
   border: 1px solid $rule-strong;
-  box-shadow: 0 6px 18px rgba(36, 16, 20, 0.08);
+  box-shadow: 0 6px 16px rgba(94, 11, 21, 0.08);
   background: #fff;
 }
 
-/* Home intro */
 .quarto-title-block .quarto-title h1.title {
   font-family: "Be Vietnam Pro", sans-serif;
   font-size: clamp(1.6rem, 3.2vw, 2.1rem);
@@ -235,15 +231,14 @@ main.content img,
 
 .quarto-listing-category .category:hover,
 .quarto-listing-category .category.active {
-  color: $burgundy !important;
-  border-left-color: $burgundy;
+  color: $burgundy-mid !important;
+  border-left-color: $burgundy-mid;
 }
 
-/* Soft essay cards */
 .quarto-grid-item {
   border: 1px solid $rule-strong !important;
   background: $paper-raised !important;
-  box-shadow: 0 8px 24px rgba(36, 16, 20, 0.06) !important;
+  box-shadow: 0 8px 22px rgba(94, 11, 21, 0.07) !important;
   border-radius: 0 !important;
   overflow: hidden;
   padding: 0 !important;
@@ -254,9 +249,9 @@ main.content img,
 }
 
 .quarto-grid-item:hover {
-  border-color: rgba(107, 15, 26, 0.35) !important;
+  border-color: rgba(144, 50, 61, 0.45) !important;
   transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(36, 16, 20, 0.1) !important;
+  box-shadow: 0 12px 28px rgba(94, 11, 21, 0.11) !important;
 }
 
 .quarto-grid-item .card-img,
@@ -272,7 +267,7 @@ main.content img,
   box-shadow: none !important;
   border-radius: 0 !important;
   margin: 0 !important;
-  background: #e8ddd8 !important;
+  background: darken($paper, 6%) !important;
 }
 
 .quarto-grid-item .card-body,
@@ -296,7 +291,7 @@ main.content img,
 
 .quarto-grid-item .listing-title a:hover,
 .quarto-grid-item .card-title a:hover {
-  color: $burgundy !important;
+  color: $burgundy-mid !important;
 }
 
 .quarto-grid-item .listing-description,
@@ -319,8 +314,8 @@ main.content img,
   padding: 0.18rem 0.45rem !important;
   border: 1px solid $rule-strong !important;
   border-radius: 0 !important;
-  color: $burgundy !important;
-  background: rgba(107, 15, 26, 0.04) !important;
+  color: $burgundy-mid !important;
+  background: rgba(144, 50, 61, 0.07) !important;
   font-size: 0.68rem !important;
   font-weight: 700 !important;
   letter-spacing: 0.04em;
@@ -338,7 +333,7 @@ main.content img,
 .quarto-listing .quarto-post {
   border: 1px solid $rule-strong;
   background: $paper-raised;
-  box-shadow: 0 8px 24px rgba(36, 16, 20, 0.06);
+  box-shadow: 0 8px 22px rgba(94, 11, 21, 0.07);
   padding: 0;
   margin-bottom: 1.25rem;
   overflow: hidden;
@@ -355,37 +350,35 @@ main.content img,
   color: $ink-muted;
 }
 
-/* TOC */
 .sidebar nav[role="doc-toc"] ul a {
   color: $ink-muted;
 }
 
 .sidebar nav[role="doc-toc"] ul a.active,
 .sidebar nav[role="doc-toc"] ul a:hover {
-  color: $burgundy;
+  color: $burgundy-mid;
 }
 
 .nav-footer {
   border-top: 1px solid $rule-strong;
   margin-top: 2rem;
   background: $footer-bg !important;
-  color: $ink-muted !important;
+  color: $taupe !important;
 }
 
 .nav-footer a {
-  color: $burgundy;
+  color: $burgundy-mid;
 }
 
 ::selection {
-  background: rgba(196, 163, 90, 0.35);
+  background: rgba(188, 128, 52, 0.35);
   color: $ink;
 }
 
-/* Kill leftover dark-theme overrides */
 body.quarto-light,
 body.quarto-dark,
 body {
-  background: linear-gradient(180deg, #f3ebe6 0%, #f7f1ed 45%, #f4ece7 100%) !important;
+  background: linear-gradient(180deg, #e4d8c6 0%, #d9cab3 50%, #d2c2a9 100%) !important;
   color: $ink !important;
 }
 
