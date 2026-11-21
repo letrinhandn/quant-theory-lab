@@ -64,7 +64,7 @@ body {
   color: $ink;
 }
 
-/* Shared header chrome — match personal site: Home Economics | avatar | Quant Finance */
+/* Shared header — Home Economics | avatar | Quant Finance (same as hub) */
 #quarto-header {
   background: #3a070e;
 }
@@ -72,40 +72,33 @@ body {
 .navbar {
   background: #3a070e !important;
   border-bottom: 3px solid #d9cab3 !important;
-  min-height: 3.25rem;
+  min-height: 3.4rem;
   padding: 0.45rem 1rem !important;
 }
 
 .navbar > .container,
 .navbar > .container-fluid,
 .navbar-container.container-fluid {
-  display: grid !important;
-  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-  align-items: center;
-  column-gap: 1rem;
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
   width: min(720px, 100%) !important;
   max-width: 720px !important;
   margin: 0 auto !important;
   padding-left: 0 !important;
   padding-right: 0 !important;
+  min-height: 2.6rem;
 }
 
-/* Collapse wrapper dissolves so nav lists join the header grid */
-@media (min-width: 992px) {
-  .navbar-container #navbarCollapse {
-    display: contents !important;
-  }
-
-  .navbar-toggler {
-    display: none !important;
-  }
-}
-
+/* Centered avatar */
 .navbar-brand-container {
-  grid-column: 2;
-  grid-row: 1;
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%);
   margin: 0 !important;
-  justify-self: center;
+  z-index: 3;
 }
 
 .navbar .navbar-brand {
@@ -126,24 +119,37 @@ body {
   box-shadow: 2px 2px 0 #5e0b15;
 }
 
-.navbar-nav.navbar-nav-scroll.me-auto {
-  grid-column: 1;
-  grid-row: 1;
-  justify-self: end;
-  margin: 0 !important;
-  flex-direction: row !important;
-  flex-wrap: nowrap;
-  gap: 0.25rem;
-}
+@media (min-width: 992px) {
+  .navbar-toggler {
+    display: none !important;
+  }
 
-.navbar-nav.navbar-nav-scroll.ms-auto {
-  grid-column: 3;
-  grid-row: 1;
-  justify-self: start;
-  margin: 0 !important;
-  flex-direction: row !important;
-  flex-wrap: nowrap;
-  gap: 0.25rem;
+  .navbar-container #navbarCollapse {
+    display: flex !important;
+    flex-basis: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    visibility: visible !important;
+  }
+
+  .navbar-nav.navbar-nav-scroll.me-auto {
+    margin: 0 !important;
+    margin-right: auto !important;
+    padding-right: 3.25rem; /* clear centered avatar */
+    flex-direction: row !important;
+    flex-wrap: nowrap;
+    gap: 0.25rem;
+  }
+
+  .navbar-nav.navbar-nav-scroll.ms-auto {
+    margin: 0 !important;
+    margin-left: auto !important;
+    padding-left: 3.25rem; /* clear centered avatar */
+    flex-direction: row !important;
+    flex-wrap: nowrap;
+    gap: 0.25rem;
+  }
 }
 
 .quarto-navbar-tools {
@@ -188,10 +194,14 @@ body {
   .navbar > .container,
   .navbar > .container-fluid,
   .navbar-container.container-fluid {
-    display: flex !important;
-    flex-wrap: wrap;
+    justify-content: space-between !important;
     width: 100% !important;
     max-width: none !important;
+  }
+
+  .navbar-brand-container {
+    position: static !important;
+    transform: none !important;
   }
 
   .navbar-container #navbarCollapse {
@@ -202,15 +212,7 @@ body {
     display: block !important;
     width: 100%;
     order: 3;
-  }
-
-  .navbar-brand-container {
-    order: 1;
-  }
-
-  .navbar-toggler {
-    order: 2;
-    margin-left: auto;
+    margin-top: 0.5rem;
   }
 }
 
