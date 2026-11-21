@@ -8,7 +8,7 @@ project:
 
 website:
   title: "Quant Theory Lab"
-  description: "Essays on quantitative finance theory by Le Tri Nhan"
+  description: "Personal essays, projects, and works in quant theory by Le Tri Nhan"
   site-url: https://letrinhandn.github.io/quant-theory-lab
   repo-url: https://github.com/letrinhandn/quant-theory-lab
   favicon: styles/favicon.svg

@@ -2,7 +2,7 @@
 title: "About"
 ---
 
-Quant Theory Lab is a Quarto notebook vault by Le Tri Nhan.
+Quant Theory Lab collects personal essays, projects, and works in quantitative finance theory by Le Tri Nhan.
 
 Root hub: [personal site](https://letrinhandn.github.io/letrinhan-site/).
 
