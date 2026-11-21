@@ -20,7 +20,7 @@ website:
     title: false
     left:
       - text: Tech
-        href: https://letrinhandn.github.io/letrinhan-site/
+        href: https://letrinhandn.github.io/tech-lab/
       - text: Economics
         href: https://letrinhandn.github.io/economic-lab/
     right:
@@ -30,7 +30,7 @@ website:
         href: https://letrinhandn.github.io/investment-research-lab/
   page-footer:
     left: "Le Tri Nhan"
-    center: "[Tech](https://letrinhandn.github.io/letrinhan-site/)  [Economics](https://letrinhandn.github.io/economic-lab/)  [Quant](https://letrinhandn.github.io/quant-theory-lab/)  [Finance](https://letrinhandn.github.io/investment-research-lab/)"
+    center: "[Tech](https://letrinhandn.github.io/tech-lab/)  [Economics](https://letrinhandn.github.io/economic-lab/)  [Quant](https://letrinhandn.github.io/quant-theory-lab/)  [Finance](https://letrinhandn.github.io/investment-research-lab/)"
     right: "Research only"
   search: false
   draft-mode: gone
@@ -49,6 +49,7 @@ format:
     link-external-newwindow: true
     mainfont: "Be Vietnam Pro"
     respect-user-color-scheme: false
+    include-after-body: styles/nav-home.html
 
 execute:
   freeze: auto

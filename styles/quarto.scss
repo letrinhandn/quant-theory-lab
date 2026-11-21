@@ -64,37 +64,40 @@ body {
   color: $ink;
 }
 
-/* Shared header — Tech Economics | avatar | Quant Finance (same as hub) */
+/* Shared header — match hub compact: Tech Economics | 40px avatar | Quant Finance */
 #quarto-header {
   background: #3a070e;
   overflow: visible !important;
 }
 
 .navbar {
+  --logo-compact: 40px;
+  --logo-gap: 1.25rem;
+  --nav-gap: 0.65rem;
+  --header-pad-y: 0.55rem;
   background: #3a070e !important;
   border-bottom: 3px solid #d9cab3 !important;
-  min-height: 3.4rem;
-  padding: 0.45rem 1rem !important;
+  min-height: calc(var(--logo-compact) + var(--header-pad-y) * 2 + 3px);
+  height: calc(var(--logo-compact) + var(--header-pad-y) * 2 + 3px);
+  padding: var(--header-pad-y) 1rem !important;
   overflow: visible !important;
+  align-items: center;
 }
 
 .navbar > .container,
 .navbar > .container-fluid,
 .navbar-container.container-fluid {
   position: relative !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
+  display: block !important;
   width: min(720px, 100%) !important;
   max-width: 720px !important;
+  height: 100% !important;
   margin: 0 auto !important;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-  min-height: 2.6rem;
+  padding: 0 !important;
   overflow: visible !important;
 }
 
-/* Centered avatar — above full-width collapse so it stays visible */
+/* Compact centered avatar (hub scrolled size) — links to root via nav-home.js */
 .navbar .navbar-brand-container,
 .navbar-brand-container {
   position: absolute !important;
@@ -105,10 +108,13 @@ body {
   padding: 0 !important;
   max-width: none !important;
   min-width: 0 !important;
-  width: auto !important;
+  width: var(--logo-compact) !important;
+  height: var(--logo-compact) !important;
   z-index: 40 !important;
-  pointer-events: auto;
   order: 0 !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
 }
 
 .navbar .navbar-brand,
@@ -120,13 +126,16 @@ body {
   padding: 0 !important;
   overflow: visible !important;
   max-width: none !important;
+  width: var(--logo-compact) !important;
+  height: var(--logo-compact) !important;
+  line-height: 0;
 }
 
 .navbar .navbar-brand img,
 .navbar .navbar-logo {
-  width: 40px !important;
-  height: 40px !important;
-  max-height: 40px !important;
+  width: var(--logo-compact) !important;
+  height: var(--logo-compact) !important;
+  max-height: var(--logo-compact) !important;
   object-fit: cover;
   border: 2px solid #d9cab3;
   box-shadow: 2px 2px 0 #5e0b15;
@@ -137,35 +146,41 @@ body {
     display: none !important;
   }
 
+  /* Same geometry as hub: 1fr | avatar-slot | 1fr */
   .navbar-container #navbarCollapse,
   .navbar .navbar-collapse {
-    display: flex !important;
-    flex-basis: 100%;
-    width: 100%;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) calc(var(--logo-compact) + var(--logo-gap)) minmax(0, 1fr);
+    column-gap: var(--nav-gap);
     align-items: center;
-    justify-content: space-between;
+    width: 100% !important;
+    height: 100%;
+    flex-basis: auto !important;
     visibility: visible !important;
     background: transparent !important;
     position: relative;
     z-index: 1;
+    padding: 0 !important;
   }
 
   .navbar-nav.navbar-nav-scroll.me-auto {
+    grid-column: 1;
     margin: 0 !important;
-    margin-right: auto !important;
-    padding-right: 3.25rem; /* clear centered avatar */
+    padding: 0 !important;
+    justify-content: flex-end !important;
     flex-direction: row !important;
     flex-wrap: nowrap;
-    gap: 0.25rem;
+    gap: 0.35rem 0.55rem;
   }
 
   .navbar-nav.navbar-nav-scroll.ms-auto {
+    grid-column: 3;
     margin: 0 !important;
-    margin-left: auto !important;
-    padding-left: 3.25rem; /* clear centered avatar */
+    padding: 0 !important;
+    justify-content: flex-start !important;
     flex-direction: row !important;
     flex-wrap: nowrap;
-    gap: 0.25rem;
+    gap: 0.35rem 0.55rem;
   }
 }
 
@@ -208,10 +223,18 @@ body {
 }
 
 @media (max-width: 991.98px) {
+  .navbar {
+    height: auto;
+    min-height: calc(var(--logo-compact) + var(--header-pad-y) * 2 + 3px);
+  }
+
   .navbar > .container,
   .navbar > .container-fluid,
   .navbar-container.container-fluid {
+    display: flex !important;
+    flex-wrap: wrap;
     justify-content: space-between !important;
+    align-items: center;
     width: 100% !important;
     max-width: none !important;
   }
@@ -228,7 +251,8 @@ body {
   }
 
   .navbar-container #navbarCollapse.show {
-    display: block !important;
+    display: flex !important;
+    flex-direction: column;
     width: 100%;
     order: 3;
     margin-top: 0.5rem;
@@ -521,7 +545,7 @@ body {
 }
 
 .navbar {
-  background: $burgundy !important;
+  background: #3a070e !important;
 }
 
 /* Hide repo-actions clutter for cleaner footer */
