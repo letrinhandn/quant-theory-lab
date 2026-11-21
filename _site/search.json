@@ -1,0 +1,23 @@
+[
+  {
+    "objectID": "posts/hello-quarto/index.html",
+    "href": "posts/hello-quarto/index.html",
+    "title": "Hello Quarto",
+    "section": "",
+    "text": "This vault publishes theory essays with Quarto instead of Substack.\nmake new-post NAME=your-slug\nmake preview\nmake publish\nSee docs/quarto.md."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Quant Theory Lab",
+    "section": "",
+    "text": "Part of the digital garden with Economic Lab and Investment Research Lab.\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\nHello Quarto\n\n\n\nmeta\n\n\n\nFirst essay scaffold on the Quant Theory Lab Quarto site.\n\n\n\n\n\nNov 21, 2026\n\n1 min\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "Quant Theory Lab is Le Tri Nhan’s Quarto vault for quantitative finance theory.\nSame garden chrome as the personal site: burgundy, paper, gold.\n\nEconomic Lab\nInvestment Research Lab"
+  }
+]
