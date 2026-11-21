@@ -16,7 +16,7 @@ website:
     background: primary
     foreground: light
     left:
-      - text: Garden
+      - text: Notebooks
         menu:
           - text: Personal site
             href: https://letrinhan-site.vercel.app/
@@ -26,8 +26,6 @@ website:
             href: https://letrinhandn.github.io/quant-theory-lab/
           - text: Investment Research Lab
             href: https://letrinhandn.github.io/investment-research-lab/
-      - href: index.qmd
-        text: Essays
       - href: about.qmd
         text: About
     right:

@@ -94,12 +94,21 @@ body {
   z-index: 1;
 }
 
+/* Listing home: no page title / intro block */
+body:has(.quarto-listing) #title-block-header {
+  display: none !important;
+}
+
 /* Listing home: no heavy paper card wrapper */
 body:has(.quarto-listing) #quarto-document-content {
   background: transparent;
   border: 0;
   box-shadow: none;
-  padding: 1.25rem 0 2rem;
+  padding: 0.75rem 0 2rem;
+}
+
+body:has(.quarto-listing) #quarto-document-content > p {
+  display: none !important;
 }
 
 body:not(:has(.quarto-listing)) #quarto-document-content {

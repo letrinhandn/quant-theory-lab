@@ -1,5 +1,4 @@
 ---
-title: "Essays"
 listing:
   contents:
     - posts/*/index.qmd
@@ -16,9 +15,3 @@ listing:
     reading-time: "Read"
 page-layout: full
 ---
-
-Pricing theory, risk, and quantitative finance.
-
-[Digital garden](https://letrinhan-site.vercel.app/)  
-[Economic Lab](https://letrinhandn.github.io/economic-lab/)  
-[Investment Research Lab](https://letrinhandn.github.io/investment-research-lab/)
