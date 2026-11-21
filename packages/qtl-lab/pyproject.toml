@@ -1,0 +1,24 @@
+[project]
+name = "qtl-lab"
+version = "0.1.0"
+description = "CLI, registry, and scaffolds"
+requires-python = ">=3.11"
+dependencies = [
+    "qtl-core",
+    "typer>=0.12",
+    "pyyaml>=6.0",
+    "rich>=13.0",
+]
+
+[project.scripts]
+qtl = "qtl_lab.cli:app"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/qtl_lab"]
+
+[tool.uv.sources]
+qtl-core = { workspace = true }

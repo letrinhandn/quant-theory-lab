@@ -1,36 +1,68 @@
 # Quant Theory Lab
 
-Lab for quantitative finance theory: pricing models, stochastic methods, and reproducible notebooks.
+Infinite knowledge vault for **quantitative finance theory**.
+
+Jupyter notebooks, academic papers, Substack essays, model cards, data sources, curated datasets, and research projects. Scale by adding plugins. No hard limit.
 
 Author: Le Tri Nhan
 
-## Scope
+## Mental model
 
-- Continuous-time and discrete pricing theory
-- Model notebooks (Black-Scholes-Merton and extensions)
-- Notes that feed applied work in Terminal Trade and investment research
+```
+NOTEBOOKS     PAPERS        POSTS           PROJECTS      DATA / DATASETS / MODELS
+theory .ipynb academic      Substack        experiments   manifests and packs
+```
 
-This repo is theory and pedagogy. Live trading and portfolio production live elsewhere.
+## Quick start
+
+```bash
+make setup
+cp .env.example .env
+make doctor
+make list
+```
+
+### Add knowledge
+
+```bash
+make new-notebook NAME=heston-pde DOMAIN=derivatives
+make new-paper NAME=local-vol-survey DOMAIN=derivatives
+make new-post NAME=risk-neutral-pricing DOMAIN=asset_pricing
+make new-project NAME=calib-sandbox DOMAIN=derivatives
+make new-data NAME=fred-rates DOMAIN=fixed_income
+make new-dataset NAME=bsm-toy DOMAIN=derivatives
+make new-model NAME=black-scholes-merton DOMAIN=derivatives
+```
 
 ## Layout
 
 ```text
-notebooks/   Executable theory notebooks
-models/      Model notes and derivations
-docs/        Reading notes and conventions
+notebooks/   Jupyter theory
+papers/      Academic articles and notes
+posts/       Substack and essays
+projects/    Runnable research
+data/        Data source manifests
+datasets/    Curated packs
+models/      Model cards and derivations
+packages/    qtl-core, qtl-lab
+lab/         Registry
+artifacts/   Local outputs (gitignored)
 ```
 
-## Notebooks
+## Current notebooks
 
-| Notebook | Topic |
+| Plugin | Topic |
 | --- | --- |
-| [Black-Scholes-Merton-Model.ipynb](notebooks/Black-Scholes-Merton-Model.ipynb) | Black-Scholes-Merton pricing |
+| [black-scholes-merton](notebooks/black-scholes-merton/) | Black-Scholes-Merton pricing |
 
-## Related
+## Related vaults
 
-- [Terminal Trade](https://github.com/letrinhandn/Terminal-Trade): market research terminal
-- [Investment Research Lab](https://github.com/letrinhandn/investment-research-lab): investment memos and research
+- [Investment Research Lab](https://github.com/letrinhandn/investment-research-lab)
+- [Terminal Trade](https://github.com/letrinhandn/Terminal-Trade)
+- Academic research monorepo (political economy and policy theory)
 
 ## License
 
 MIT. Research and education only. Not investment advice.
+
+> AI agents: read [AGENTS.md](AGENTS.md) first.

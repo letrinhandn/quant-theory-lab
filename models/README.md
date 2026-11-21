@@ -1,5 +1,3 @@
 # Models
 
-Place written derivations and model cards here.
-
-Suggested naming: `kebab-case.md` (example: `black-scholes-merton.md`).
+Model cards and derivations. Create with `make new-model NAME=slug`.

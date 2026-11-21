@@ -1,0 +1,14 @@
+# Optional metadata overlay. Filesystem discovery is source of truth.
+
+notebooks:
+  - slug: black-scholes-merton
+    status: active
+    domain: derivatives
+    title: Black-Scholes-Merton Model
+
+papers: []
+posts: []
+projects: []
+data_sources: []
+datasets: []
+models: []

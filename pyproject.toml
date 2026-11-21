@@ -1,0 +1,42 @@
+[project]
+name = "quant-theory-lab"
+version = "0.1.0"
+description = "Quant Theory Lab — infinite knowledge vault for quantitative finance theory"
+readme = "README.md"
+requires-python = ">=3.11,<3.14"
+license = { text = "MIT" }
+dependencies = [
+    "qtl-core",
+    "qtl-lab",
+]
+
+[tool.uv.workspace]
+members = [
+    "packages/qtl-core",
+    "packages/qtl-lab",
+]
+
+[tool.uv.sources]
+qtl-core = { workspace = true }
+qtl-lab = { workspace = true }
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.8",
+    "jupyter>=1.0",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+
+[tool.pytest.ini_options]
+testpaths = ["packages"]
+pythonpath = [
+    "packages/qtl-core/src",
+    "packages/qtl-lab/src",
+]
