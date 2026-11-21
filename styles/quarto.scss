@@ -64,20 +64,56 @@ body {
   color: $ink;
 }
 
-/* Shared header chrome — match personal site navigator */
+/* Shared header chrome — match personal site: Home Economics | avatar | Quant Finance */
+#quarto-header {
+  background: #3a070e;
+}
+
 .navbar {
   background: #3a070e !important;
   border-bottom: 3px solid #d9cab3 !important;
   min-height: 3.25rem;
-  padding-top: 0.35rem;
-  padding-bottom: 0.35rem;
+  padding: 0.45rem 1rem !important;
+}
+
+.navbar > .container,
+.navbar > .container-fluid,
+.navbar-container.container-fluid {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  column-gap: 1rem;
+  width: min(720px, 100%) !important;
+  max-width: 720px !important;
+  margin: 0 auto !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* Collapse wrapper dissolves so nav lists join the header grid */
+@media (min-width: 992px) {
+  .navbar-container #navbarCollapse {
+    display: contents !important;
+  }
+
+  .navbar-toggler {
+    display: none !important;
+  }
+}
+
+.navbar-brand-container {
+  grid-column: 2;
+  grid-row: 1;
+  margin: 0 !important;
+  justify-self: center;
 }
 
 .navbar .navbar-brand {
   display: flex;
   align-items: center;
-  margin: 0 0.75rem;
-  padding: 0;
+  justify-content: center;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 .navbar .navbar-brand img,
@@ -90,16 +126,42 @@ body {
   box-shadow: 2px 2px 0 #5e0b15;
 }
 
+.navbar-nav.navbar-nav-scroll.me-auto {
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: end;
+  margin: 0 !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap;
+  gap: 0.25rem;
+}
+
+.navbar-nav.navbar-nav-scroll.ms-auto {
+  grid-column: 3;
+  grid-row: 1;
+  justify-self: start;
+  margin: 0 !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap;
+  gap: 0.25rem;
+}
+
+.quarto-navbar-tools {
+  display: none !important;
+}
+
 .navbar-nav .nav-link {
   font-family: "Be Vietnam Pro", sans-serif;
   font-weight: 650;
   font-size: 0.78rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+  line-height: 1.2;
   color: rgba(217, 202, 179, 0.88) !important;
   border: 2px solid transparent;
   padding: 0.35rem 0.55rem !important;
-  margin: 0 0.1rem;
+  margin: 0;
+  white-space: nowrap;
 }
 
 .navbar-nav .nav-link:hover,
@@ -120,6 +182,36 @@ body {
   color: $gold !important;
   border-color: #d9cab3;
   background: rgba(188, 128, 52, 0.12);
+}
+
+@media (max-width: 991.98px) {
+  .navbar > .container,
+  .navbar > .container-fluid,
+  .navbar-container.container-fluid {
+    display: flex !important;
+    flex-wrap: wrap;
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  .navbar-container #navbarCollapse {
+    display: none;
+  }
+
+  .navbar-container #navbarCollapse.show {
+    display: block !important;
+    width: 100%;
+    order: 3;
+  }
+
+  .navbar-brand-container {
+    order: 1;
+  }
+
+  .navbar-toggler {
+    order: 2;
+    margin-left: auto;
+  }
 }
 
 #quarto-content,
