@@ -320,6 +320,247 @@ document.addEventListener("DOMContentLoaded", function () {
   applyLang(readLang());
 });
 </script>
+<style>
+  :root {
+    --lab-ticker-h: 2rem;
+  }
+
+  .lab-market-ticker {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1040;
+    height: var(--lab-ticker-h);
+    overflow: hidden;
+    background: #0a0a0a;
+    border-bottom: 1px solid rgba(217, 202, 179, 0.22);
+    color: #f2f2f2;
+  }
+
+  html[data-theme="light"] .lab-market-ticker {
+    background: #1a0a0c;
+    border-bottom-color: rgba(217, 202, 179, 0.18);
+  }
+
+  .lab-market-ticker .tradingview-widget-container,
+  .lab-market-ticker .tradingview-widget-container__widget {
+    height: var(--lab-ticker-h) !important;
+  }
+
+  .lab-market-ticker iframe {
+    height: var(--lab-ticker-h) !important;
+  }
+
+  /* Push fixed Quarto header + sticky sidebars below ticker */
+  body.nav-fixed {
+    padding-top: calc(var(--lab-header-offset) + var(--lab-ticker-h)) !important;
+  }
+
+  #quarto-header {
+    top: var(--lab-ticker-h) !important;
+  }
+
+  .sidebar.margin-sidebar,
+  .sidebar.toc-left,
+  #quarto-margin-sidebar.sidebar.margin-sidebar,
+  #quarto-margin-sidebar {
+    top: calc(var(--lab-header-offset) + var(--lab-ticker-h)) !important;
+    max-height: calc(100vh - var(--lab-header-offset) - var(--lab-ticker-h) - 1.25rem) !important;
+  }
+
+  #quarto-margin-sidebar .quarto-listing-category-title,
+  #quarto-margin-sidebar #toc-title,
+  #quarto-margin-sidebar nav[role="doc-toc"] > h2 {
+    scroll-margin-top: calc(var(--lab-header-offset) + var(--lab-ticker-h) + 0.75rem);
+  }
+
+  .lab-market-ticker-fallback {
+    display: none;
+    height: 100%;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 0 0.75rem;
+    white-space: nowrap;
+    overflow: hidden;
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.02em;
+  }
+
+  .lab-market-ticker.is-fallback .lab-market-ticker-fallback {
+    display: flex;
+  }
+
+  .lab-market-ticker.is-fallback .tradingview-widget-container {
+    display: none;
+  }
+
+  .lab-ticker-item {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.4rem;
+  }
+
+  .lab-ticker-sym {
+    color: rgba(242, 242, 242, 0.7);
+  }
+
+  .lab-ticker-px {
+    color: #bc8034;
+    font-weight: 600;
+  }
+
+  .lab-ticker-chg.up {
+    color: #3dd68c;
+  }
+
+  .lab-ticker-chg.down {
+    color: #f07178;
+  }
+</style>
+
+<script>
+(function () {
+  function mountTicker() {
+    if (document.getElementById("lab-market-ticker")) return;
+
+    var bar = document.createElement("div");
+    bar.id = "lab-market-ticker";
+    bar.className = "lab-market-ticker";
+    bar.setAttribute("aria-label", "Live market ticker");
+
+    bar.innerHTML =
+      '<div class="tradingview-widget-container">' +
+      '<div class="tradingview-widget-container__widget"></div>' +
+      "</div>" +
+      '<div class="lab-market-ticker-fallback" aria-live="polite"></div>';
+
+    document.body.insertBefore(bar, document.body.firstChild);
+
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src =
+      "https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js";
+    script.async = true;
+    script.text =
+      JSON.stringify({
+        symbols: [
+          { proName: "FOREXCOM:SPXUSD", title: "S&P 500" },
+          { proName: "FOREXCOM:NSXUSD", title: "Nasdaq 100" },
+          { proName: "TVC:DJI", title: "Dow 30" },
+          { proName: "TVC:VIX", title: "VIX" },
+          { proName: "TVC:US10Y", title: "US 10Y" },
+          { proName: "TVC:GOLD", title: "Gold" },
+          { proName: "FX_IDC:EURUSD", title: "EUR/USD" },
+          { proName: "FX_IDC:USDJPY", title: "USD/JPY" },
+          { proName: "BITSTAMP:BTCUSD", title: "Bitcoin" },
+          { proName: "BITSTAMP:ETHUSD", title: "Ethereum" },
+        ],
+        showSymbolLogo: false,
+        isTransparent: true,
+        displayMode: "adaptive",
+        colorTheme: "dark",
+        locale: "en",
+      });
+
+    var widgetHost = bar.querySelector(".tradingview-widget-container");
+    widgetHost.appendChild(script);
+
+    // Fallback feed if TradingView embed is blocked
+    setTimeout(function () {
+      var iframe = bar.querySelector("iframe");
+      if (!iframe) loadFallback(bar);
+    }, 4500);
+  }
+
+  function fmt(n, d) {
+    if (!isFinite(n)) return "—";
+    return n.toLocaleString("en-US", {
+      minimumFractionDigits: d,
+      maximumFractionDigits: d,
+    });
+  }
+
+  function itemHtml(sym, price, chg, digits) {
+    var cls = chg > 0 ? "up" : chg < 0 ? "down" : "";
+    var sign = chg > 0 ? "+" : "";
+    return (
+      '<span class="lab-ticker-item">' +
+      '<span class="lab-ticker-sym">' +
+      sym +
+      "</span>" +
+      '<span class="lab-ticker-px">' +
+      fmt(price, digits) +
+      "</span>" +
+      '<span class="lab-ticker-chg ' +
+      cls +
+      '">' +
+      sign +
+      fmt(chg, 2) +
+      "%</span>" +
+      "</span>"
+    );
+  }
+
+  function loadFallback(bar) {
+    bar.classList.add("is-fallback");
+    var host = bar.querySelector(".lab-market-ticker-fallback");
+    if (!host) return;
+    host.textContent = "Loading markets…";
+
+    Promise.all([
+      fetch("https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT").then(function (r) {
+        return r.json();
+      }),
+      fetch("https://api.binance.com/api/v3/ticker/24hr?symbol=ETHUSDT").then(function (r) {
+        return r.json();
+      }),
+      fetch("https://api.binance.com/api/v3/ticker/24hr?symbol=SOLUSDT").then(function (r) {
+        return r.json();
+      }),
+      fetch("https://api.frankfurter.app/latest?from=USD&to=EUR,JPY").then(function (r) {
+        return r.json();
+      }),
+      fetch(
+        "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd&include_24hr_change=true",
+      ).then(function (r) {
+        return r.json();
+      }),
+    ])
+      .then(function (results) {
+        var btc = results[0];
+        var eth = results[1];
+        var sol = results[2];
+        var fx = results[3];
+        var html = "";
+        html += itemHtml("BTC", Number(btc.lastPrice), Number(btc.priceChangePercent), 2);
+        html += itemHtml("ETH", Number(eth.lastPrice), Number(eth.priceChangePercent), 2);
+        html += itemHtml("SOL", Number(sol.lastPrice), Number(sol.priceChangePercent), 2);
+        if (fx && fx.rates) {
+          html +=
+            '<span class="lab-ticker-item"><span class="lab-ticker-sym">EUR/USD</span><span class="lab-ticker-px">' +
+            fmt(1 / fx.rates.EUR, 4) +
+            "</span></span>";
+          html +=
+            '<span class="lab-ticker-item"><span class="lab-ticker-sym">USD/JPY</span><span class="lab-ticker-px">' +
+            fmt(fx.rates.JPY, 2) +
+            "</span></span>";
+        }
+        host.innerHTML = html;
+      })
+      .catch(function () {
+        host.textContent = "Market data unavailable";
+      });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", mountTicker);
+  } else {
+    mountTicker();
+  }
+})();
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
