@@ -379,24 +379,25 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 <style>
   :root {
-    --lab-ticker-h: 2.35rem;
+    --lab-ticker-h: 2.45rem;
   }
 
   .lab-market-ticker {
-    --ticker-bg: #0c0c0c;
-    --ticker-fg: #f3eee8;
-    --ticker-muted: rgba(243, 238, 232, 0.55);
-    --ticker-accent: #c45c3a;
-    --ticker-up: #3dd68c;
-    --ticker-down: #f07178;
-    --ticker-card: #161616;
-    --ticker-line: rgba(243, 238, 232, 0.12);
+    /* Match lab chrome: deep burgundy + cream + gold */
+    --ticker-bg: #2a050a;
+    --ticker-fg: #d9cab3;
+    --ticker-muted: rgba(217, 202, 179, 0.58);
+    --ticker-accent: #bc8034;
+    --ticker-up: #7dcea0;
+    --ticker-down: #e08a8a;
+    --ticker-card: #3a070e;
+    --ticker-line: rgba(217, 202, 179, 0.22);
 
     position: fixed;
-    top: 0;
+    top: var(--lab-header-offset, 6rem);
     left: 0;
     right: 0;
-    z-index: 1040;
+    z-index: 1025;
     height: var(--lab-ticker-h);
     overflow: hidden;
     background: var(--ticker-bg);
@@ -405,14 +406,20 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   html[data-theme="light"] .lab-market-ticker {
-    --ticker-bg: #1a0a0c;
-    --ticker-accent: #bc8034;
+    --ticker-bg: #efe6e1;
+    --ticker-fg: #5e0b15;
+    --ticker-muted: rgba(94, 11, 21, 0.55);
+    --ticker-accent: #90323d;
+    --ticker-up: #1f7a4d;
+    --ticker-down: #a33b3b;
+    --ticker-card: #fffdfb;
+    --ticker-line: rgba(94, 11, 21, 0.14);
   }
 
   .lab-ticker-viewport {
     height: 100%;
     overflow: hidden;
-    mask-image: linear-gradient(90deg, transparent, #000 2%, #000 98%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 1.5%, #000 98.5%, transparent);
   }
 
   .lab-ticker-track {
@@ -420,8 +427,8 @@ document.addEventListener("DOMContentLoaded", function () {
     align-items: center;
     width: max-content;
     height: 100%;
-    gap: 0.55rem;
-    padding: 0 0.55rem;
+    gap: 0.5rem;
+    padding: 0 0.65rem;
     will-change: transform;
     animation: lab-ticker-x 55s linear infinite;
   }
@@ -439,14 +446,14 @@ document.addEventListener("DOMContentLoaded", function () {
     display: grid;
     grid-template-columns: auto auto;
     grid-template-rows: auto auto;
-    column-gap: 0.85rem;
-    row-gap: 0.05rem;
+    column-gap: 0.8rem;
+    row-gap: 0.04rem;
     align-items: baseline;
-    min-width: 9.5rem;
-    padding: 0.28rem 0.7rem;
+    min-width: 9.4rem;
+    padding: 0.26rem 0.65rem;
     background: var(--ticker-card);
     border: 1px solid var(--ticker-line);
-    border-radius: 0.35rem;
+    border-radius: 0;
     font-family: ui-monospace, "SF Mono", "IBM Plex Mono", Menlo, monospace;
     font-size: 0.68rem;
     line-height: 1.2;
@@ -457,8 +464,8 @@ document.addEventListener("DOMContentLoaded", function () {
     grid-column: 1;
     grid-row: 1;
     color: var(--ticker-fg);
-    font-weight: 600;
-    letter-spacing: 0.02em;
+    font-weight: 650;
+    letter-spacing: 0.03em;
   }
 
   .lab-ticker-px {
@@ -473,15 +480,15 @@ document.addEventListener("DOMContentLoaded", function () {
     grid-column: 1;
     grid-row: 2;
     color: var(--ticker-muted);
-    font-size: 0.62rem;
+    font-size: 0.6rem;
   }
 
   .lab-ticker-chg {
     grid-column: 2;
     grid-row: 2;
     justify-self: end;
-    font-size: 0.62rem;
-    font-weight: 600;
+    font-size: 0.6rem;
+    font-weight: 650;
   }
 
   .lab-ticker-chg.up { color: var(--ticker-up); }
@@ -498,13 +505,13 @@ document.addEventListener("DOMContentLoaded", function () {
     color: var(--ticker-muted);
   }
 
-  /* Push fixed Quarto chrome below ticker */
+  /* Header stays at top; body + sidebars clear header + ticker */
   body.nav-fixed {
     padding-top: calc(var(--lab-header-offset) + var(--lab-ticker-h)) !important;
   }
 
   #quarto-header {
-    top: var(--lab-ticker-h) !important;
+    top: 0 !important;
   }
 
   .sidebar.margin-sidebar,
@@ -519,6 +526,12 @@ document.addEventListener("DOMContentLoaded", function () {
   #quarto-margin-sidebar #toc-title,
   #quarto-margin-sidebar nav[role="doc-toc"] > h2 {
     scroll-margin-top: calc(var(--lab-header-offset) + var(--lab-ticker-h) + 0.75rem);
+  }
+
+  @media (max-width: 991.98px) {
+    .lab-market-ticker {
+      top: var(--lab-header-offset, 5.25rem);
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -565,12 +578,11 @@ document.addEventListener("DOMContentLoaded", function () {
     var viewport = bar.querySelector(".lab-ticker-viewport");
     if (!viewport) return;
     var html = rows.map(cardHtml).join("");
-    // Duplicate for seamless loop
     viewport.innerHTML =
       '<div class="lab-ticker-track">' + html + html + "</div>";
   }
 
-  function renderFx(rows, fx) {
+  function withFx(rows, fx) {
     if (!fx || !fx.rates) return rows;
     rows.push({
       label: "EUR/USD",
@@ -599,7 +611,13 @@ document.addEventListener("DOMContentLoaded", function () {
     bar.innerHTML =
       '<div class="lab-ticker-status">Loading markets…</div>' +
       '<div class="lab-ticker-viewport" hidden></div>';
-    document.body.insertBefore(bar, document.body.firstChild);
+
+    var header = document.getElementById("quarto-header");
+    if (header && header.parentNode) {
+      header.insertAdjacentElement("afterend", bar);
+    } else {
+      document.body.insertBefore(bar, document.body.firstChild);
+    }
 
     var binanceUrl =
       "https://api.binance.com/api/v3/ticker/24hr?symbols=" +
@@ -630,7 +648,7 @@ document.addEventListener("DOMContentLoaded", function () {
           };
         }).filter(function (r) { return isFinite(r.price); });
 
-        rows = renderFx(rows, fx);
+        rows = withFx(rows, fx);
         if (!rows.length) throw new Error("empty");
 
         bar.querySelector(".lab-ticker-status").hidden = true;
